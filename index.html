@@ -29,6 +29,30 @@
          center: [-78.6382, 35.7796], // change starting position to coordinates associated w/ your data.
          zoom: 6 // starting zoom
          });
+         map.addSource('trees', {
+                  type: 'GeoJSON',
+                  data: 'https://github.com/eternalscholar/mapbox-workshop/blob/master/trees_shp'
+              });
+         map.addLayer({
+               'id': 'trees',
+               "type": "fill",
+               "source": "trees",
+               'layout': {},
+               'paint': {
+                   'fill-color': {
+                     property: 'do_rast1',
+                     type: 'exponential',
+                     stops: [
+                     [8.312620, '#edf8fb'],
+                     [8.656304, '#b2e2e2'],
+                     [8.7, '#66c2a4'],
+                     [8.9, '#2ca25f'],
+                     [9.119719, '#006d2c']
+                     ],
+                   },
+                   'fill-opacity': 0.2
+               }
+           });
       </script>
    </body>
 </html>
